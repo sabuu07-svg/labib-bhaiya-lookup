@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LABIB BHAIYA Lookup</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f9fafb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #111;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    input {
+      width: 90%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+    }
+    button {
+      background: #0ea5e9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    button:hover {
+      background: #0284c7;
+    }
+    pre {
+      text-align: left;
+      background: #f1f5f9;
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+    footer {
+      margin-top: 25px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>📱 LABIB BHAIYA Number Lookup</h1>
+  <div class="box">
+    <input id="number" placeholder="Enter phone number">
+    <button onclick="lookup()">Search</button>
+    <pre id="result"></pre>
+  </div>
+
+  <footer>Developed by ❤️ LABIB BHAIYA</footer>
+
+  <script>
+    async function lookup() {
+      const number = document.getElementById("number").value.trim();
+      const result = document.getElementById("result");
+      if (!number) {
+        result.textContent = "⚠️ Please enter a number.";
+        return;
+      }
+      result.textContent = "🔍 Searching...";
+      try {
+        const res = await fetch(`https://www.gajarbotol.site/Lookup/lookup?number=${number}`);
+        const data = await res.json();
+        result.textContent = JSON.stringify(data, null, 2);
+      } catch (error) {
+        result.textContent = "❌ Error fetching data.";
+      }
+    }
+  </script>
+</body>
+  </html>
